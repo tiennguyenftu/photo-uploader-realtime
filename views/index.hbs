@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Photo Uploader</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>Photo Uploader</h1>
+                <div id="ip-info"></div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <input type="file" id="imageSelector" multiple="multiple" class="form-control" accept="image/*">
+                </div>
+            </div>
+            <hr>
+            <div class="row" id="images">
+                {{#if images}}
+                    {{#each images}}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="thumbnail">
+                                <img src="/uploads/{{this}}" alt="{{this}}">
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <h3>No Photos Found.</h3>
+                {{/if}}
+            </div>
+
+            <script src="js/ip-detect.js"></script>
+            <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+            <script src="js/transfer.js"></script>
+        </div>
+    </body>
+</html>
