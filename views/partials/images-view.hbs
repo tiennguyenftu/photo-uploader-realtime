@@ -1,0 +1,11 @@
+<div class="row" id="images">
+    {{#if images}}
+        {{#each images}}
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="/uploads/{{this}}" alt="{{this}}">
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>

@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -14,7 +16,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', function (req, res, next) {
     fs.readdir(__dirname + '/public/uploads/', function (err, files) {
-        res.render('index', {images: files});
+        if (err) return next(err);
+        res.render('index', {images: files.reverse()});
     });
 });
 
@@ -31,9 +34,7 @@ io.on("connection", function(socket){
         var savedFilename = moment().format('MMMM-Do-YYYY-h-mm-ss-') + randomString(5) + ext;
         fs.writeFile(__dirname + '/public/uploads/' + savedFilename, getBase64Image(data.base64), 'base64', function (err) {
             if (err) return console.log(err);
-            io.emit('fetchPhoto', {
-                path: savedFilename
-            });
+            io.emit('fetchPhoto', {path: savedFilename});
         });
     });
 
