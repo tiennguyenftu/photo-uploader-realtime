@@ -11,11 +11,13 @@ $(function () {
     $imageSelector.on('change', function () {
         var reader = new FileReader();
         reader.onload = function (e) {
-            previewImage.src = e.target.result;
+            console.log(e.target.result);
+            var blob = new Blob([e.target.result]);
+            $previewImage[0].src = URL.createObjectURL(blob);
             $modal.modal('show');
         };
         if ($imageSelector[0].files.length) {
-            reader.readAsDataURL($imageSelector[0].files[0]);
+            reader.readAsArrayBuffer($imageSelector[0].files[0]);
             $imageSelector.val('');
         } else {
             console.log('No file chosen.');
