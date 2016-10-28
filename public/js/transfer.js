@@ -3,7 +3,6 @@ var socket = io();
 $(function () {
     var $imageSelector = $('#imageSelector');
     var $previewImage = $('#preview');
-    var previewImage = document.getElementById('preview');
     var $modal = $('#modal');
     var $save = $('#save');
     var $images = $('#images');
@@ -11,7 +10,6 @@ $(function () {
     $imageSelector.on('change', function () {
         var reader = new FileReader();
         reader.onload = function (e) {
-            console.log(e.target.result);
             var blob = new Blob([e.target.result]);
             $previewImage[0].src = URL.createObjectURL(blob);
             $modal.modal('show');
@@ -28,8 +26,10 @@ $(function () {
 
     $modal.on('shown.bs.modal', function () {
         $previewImage.cropper({
-            autoCropArea: 0.5,
-            aspectRatio: 1/1
+            autoCropArea: 1,
+            aspectRatio: 1/1,
+            // cropBoxResizable: false,
+            // zoomable: false
         });
     });
 

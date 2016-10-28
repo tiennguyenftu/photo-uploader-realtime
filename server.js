@@ -37,7 +37,6 @@ io.on("connection", function(socket){
             io.emit('fetchPhoto', {path: savedFilename});
         });
     });
-
 });
 
 function randomString(length) {
