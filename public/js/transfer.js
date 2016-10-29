@@ -12,19 +12,19 @@ $(function () {
 
         if ($imageSelector[0].files.length) {
             //Validator
-            if ($imageSelector[0].files.length > 20) {
-                showAlert('Bạn chỉ có thể tải lên tối đa 20 ảnh 1 lần. Vui lòng thử lại.');
-            }
-
-            var sum = 0;
-            var MAX_SIZE = 25;
-            for (var j = 0; j < $imageSelector[0].files.length; j++) {
-                sum += $imageSelector[0].files[j].size;
-            }
-
-            if (sum/1024/1024 > MAX_SIZE) {
-               showAlert('Bạn chỉ có thể tải lên tối đa' + MAX_SIZE + ' MB/lần. Vui lòng thử lại.');
-            }
+            // if ($imageSelector[0].files.length > 20) {
+            //     showAlert('Bạn chỉ có thể tải lên tối đa 20 ảnh 1 lần. Vui lòng thử lại.');
+            // }
+            //
+            // var sum = 0;
+            // var MAX_SIZE = 25;
+            // for (var j = 0; j < $imageSelector[0].files.length; j++) {
+            //     sum += $imageSelector[0].files[j].size;
+            // }
+            //
+            // if (sum/1024/1024 > MAX_SIZE) {
+            //    showAlert('Bạn chỉ có thể tải lên tối đa' + MAX_SIZE + ' MB/lần. Vui lòng thử lại.');
+            // }
 
 
             //Continue
